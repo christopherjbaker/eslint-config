@@ -7,7 +7,7 @@ exports.interfaceVersion = 2
 
 exports.resolve = function resolver(source, file, config) {
   if (source.startsWith(`~${path.sep}`) || source === '~') {
-    source = path.join(__dirname, 'src', 'shared', source.slice(1)) // ~/
+    source = path.join(process.cwd(), 'src', 'shared', source.slice(1)) // remove '~/'
     const test = fallback.resolve(source, file, config)
     if (test.found) {
       return test

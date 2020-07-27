@@ -14,7 +14,7 @@ module.exports = {
           '.json',
         ],
       },
-      'import-resolver-custom-eslint': {
+      '@hmudesign/eslint-config/import-resolver-custom-eslint': {
         extensions: [
           '.js',
           '.jsx',
