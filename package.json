@@ -2,6 +2,9 @@
   "name": "@hmudesign/eslint-config",
   "version": "1.0.0",
   "description": "",
+  "author": "Christopher Baker <christopher@hmudesign.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/HMUDesign/eslint-config#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HMUDesign/eslint-config.git"
@@ -9,10 +12,13 @@
   "bugs": {
     "url": "https://github.com/HMUDesign/eslint-config/issues"
   },
-  "author": "Christopher Baker <christopher@hmudesign.com>",
-  "license": "MIT",
+  "scripts": {
+    "release:major": "npm version major && git push && git push --tags && npm publish",
+    "release:minor": "npm version minor && git push && git push --tags && npm publish",
+    "release:patch": "npm version patch && git push && git push --tags && npm publish",
+    "release:pre": "npm version prerelease && git push && git push --tags && npm publish --tag=pre"
+  },
   "main": "index.js",
-  "homepage": "https://github.com/HMUDesign/eslint-config#readme",
   "dependencies": {
     "babel-eslint": "^10.1.0",
     "eslint-config-airbnb": "^18.2.0",
