@@ -1,0 +1,24 @@
+{
+  "name": "@hmudesign/eslint-config",
+  "version": "0.1.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HMUDesign/eslint-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HMUDesign/eslint-config/issues"
+  },
+  "author": "Christopher Baker <christopher@hmudesign.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "homepage": "https://github.com/HMUDesign/eslint-config#readme",
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.4",
+    "eslint-plugin-react-hooks": "^4.0.8"
+  }
+}
