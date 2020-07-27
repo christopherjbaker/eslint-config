@@ -32,9 +32,10 @@ module.exports = {
 
     'import/no-extraneous-dependencies': [ 'error', {
       devDependencies: [
+        '/.storybook/*',
+        '/jest.*',
         '**/*.test.js',
         '**/*.stories.js',
-        '/jest.*',
       ],
     }],
     'import/no-unresolved': [ 'error', {
