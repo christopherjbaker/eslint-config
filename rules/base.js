@@ -12,6 +12,7 @@ module.exports = {
     'max-len': 'off',
     'no-await-in-loop': 'off',
     'no-continue': 'off',
+    'no-func-assign': 'off',
     'no-inner-declarations': 'off',
     'no-lonely-if': 'off',
     'no-loop-func': 'off',
