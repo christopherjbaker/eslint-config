@@ -32,8 +32,8 @@ module.exports = {
 
     'import/no-extraneous-dependencies': [ 'error', {
       devDependencies: [
-        '/.config/*',
-        '/.storybook/*',
+        '/.config/**',
+        '/.storybook/**',
         '/jest.*',
         '**/*.test.js',
         '**/*.stories.js',
