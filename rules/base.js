@@ -32,6 +32,10 @@ module.exports = {
       ignoreRestSiblings: true,
       args: 'none',
     }],
+    'no-warning-comments': [ 'warn', {
+      terms: [ 'todo', 'fixme', 'xxx' ],
+      location: 'start',
+    }],
     'object-curly-newline': [ 'error', {
       multiline: true,
       consistent: true,
