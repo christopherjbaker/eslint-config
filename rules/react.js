@@ -1,6 +1,7 @@
 module.exports = {
   plugins: [
     'react-hooks',
+    'jsx-a11y',
   ],
   rules: {
     'react/jsx-filename-extension': 'off',
@@ -16,6 +17,14 @@ module.exports = {
     }],
     'react/no-unused-prop-types': [ 'error', {
       skipShapeProps: false,
+    }],
+
+    'jsx-a11y/label-has-associated-control': ['error', {
+      labelComponents: [],
+      labelAttributes: [],
+      controlComponents: [],
+      assert: 'either',
+      depth: 25
     }],
   },
 }

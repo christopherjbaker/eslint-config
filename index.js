@@ -2,6 +2,7 @@ module.exports = {
   parser: 'babel-eslint',
   extends: [
     './rules/base',
+    './rules/import',
     './rules/react',
   ].map(require.resolve),
   settings: {
@@ -25,26 +26,5 @@ module.exports = {
   env: {
     browser: true,
     jest: true,
-  },
-  rules: {
-    'import/prefer-default-export': 'off',
-    'jsx-a11y/click-events-have-key-events': 'off',
-
-    'import/no-extraneous-dependencies': [ 'error', {
-      devDependencies: [
-        '/.config/**',
-        '/.storybook/**',
-        '/jest.*',
-        '**/*.test.js',
-        '**/*.stories.js',
-      ],
-    }],
-    'import/no-unresolved': [ 'error', {
-      commonjs: true,
-      caseSensitive: true,
-      ignore: [
-        '^~',
-      ],
-    }],
   },
 }
