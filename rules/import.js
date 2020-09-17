@@ -10,8 +10,8 @@ module.exports = {
         '/.config/**',
         '/.storybook/**',
         '/jest.*',
-        '**/*.test.js',
-        '**/*.stories.js',
+        '**/*.test.@(js|jsx|ts|tsx)',
+        '**/*.stories.@(js|jsx|ts|tsx|mdx)',
       ],
     }],
     'import/no-unresolved': [ 'error', {

@@ -17,6 +17,7 @@ module.exports = {
     'no-lonely-if': 'off',
     'no-loop-func': 'off',
     'no-mixed-operators': 'off',
+    'no-nested-ternary': 'off',
     'no-param-reassign': 'off',
     'no-plusplus': 'off',
     'no-restricted-syntax': 'off',
