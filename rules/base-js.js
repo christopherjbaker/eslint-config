@@ -1,7 +1,7 @@
 module.exports = {
   extends: [
     'eslint-config-airbnb',
-  ].map(require.resolve),
+  ],
   rules: {
     'arrow-body-style': 'off',
     'arrow-parens': 'off',

@@ -1,7 +1,7 @@
 module.exports = {
-  parser: 'babel-eslint',
+  parser: '@typescript-eslint/parser',
   extends: [
-    './rules/base',
+    './rules/base-ts',
     './rules/import',
     './rules/react',
   ].map(require.resolve),
@@ -10,14 +10,9 @@ module.exports = {
       'node': {
         extensions: [
           '.js',
+          '.ts',
           '.jsx',
-          '.json',
-        ],
-      },
-      '@hmudesign/eslint-config/import-resolver-custom-eslint': {
-        extensions: [
-          '.js',
-          '.jsx',
+          '.tsx',
           '.json',
         ],
       },
