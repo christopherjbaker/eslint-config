@@ -7,14 +7,17 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-inferrable-types': 'off',
 
-    'no-unused-vars': [ 'error', {
-      ignoreRestSiblings: true,
-      args: 'none',
-    }],
     'no-warning-comments': [ 'warn', {
       terms: [ 'todo', 'fixme', 'xxx' ],
       location: 'start',
+    }],
+
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [ 'error', {
+      ignoreRestSiblings: true,
+      args: 'none',
     }],
   },
 }

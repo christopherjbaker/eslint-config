@@ -19,7 +19,16 @@ module.exports = {
       caseSensitive: true,
       ignore: [
         '^~',
+        '^@shared',
       ],
     }],
+    'import/extensions': [
+      'error',
+      'always',
+      {
+        js: 'never',
+        ts: 'never'
+      }
+    ],
   },
 }
