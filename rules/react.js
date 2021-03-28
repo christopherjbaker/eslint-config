@@ -13,10 +13,10 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
 
-    'react/default-props-match-prop-types': [ 'error', {
+    'react/default-props-match-prop-types': ['error', {
       allowRequiredDefaults: true,
     }],
-    'react/no-unused-prop-types': [ 'error', {
+    'react/no-unused-prop-types': ['error', {
       skipShapeProps: false,
     }],
 

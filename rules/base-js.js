@@ -25,19 +25,19 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-use-before-define': 'off',
 
-    'array-bracket-spacing': [ 'error', 'always' ],
-    'quote-props': [ 'error', 'consistent' ],
-    'semi': [ 'error', 'never' ],
+    'array-bracket-spacing': ['error', 'always'],
+    'quote-props': ['error', 'consistent'],
+    'semi': ['error', 'never'],
 
-    'no-unused-vars': [ 'error', {
+    'no-unused-vars': ['error', {
       ignoreRestSiblings: true,
       args: 'none',
     }],
-    'no-warning-comments': [ 'warn', {
-      terms: [ 'todo', 'fixme', 'xxx' ],
+    'no-warning-comments': ['warn', {
+      terms: ['todo', 'fixme', 'xxx'],
       location: 'start',
     }],
-    'object-curly-newline': [ 'error', {
+    'object-curly-newline': ['error', {
       multiline: true,
       consistent: true,
     }],

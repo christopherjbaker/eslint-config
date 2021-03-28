@@ -5,7 +5,7 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 'off',
 
-    'import/no-extraneous-dependencies': [ 'error', {
+    'import/no-extraneous-dependencies': ['error', {
       devDependencies: [
         '/.config/**',
         '/.storybook/**',
@@ -14,7 +14,7 @@ module.exports = {
         '**/*.stories.@(js|jsx|ts|tsx|mdx)',
       ],
     }],
-    'import/no-unresolved': [ 'error', {
+    'import/no-unresolved': ['error', {
       commonjs: true,
       caseSensitive: true,
       ignore: [
@@ -27,7 +27,9 @@ module.exports = {
       'always',
       {
         js: 'never',
-        ts: 'never'
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
       }
     ],
   },
