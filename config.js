@@ -1,11 +1,14 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
-    './rules/base-ts',
+    './rules/base',
     './rules/import',
     './rules/react',
   ].map(require.resolve),
   settings: {
+    "react": {
+      "version": "detect"
+    },
     'import/resolver': {
       'node': {
         extensions: [
