@@ -12,6 +12,7 @@ module.exports = {
           "/.config/**",
           "/.storybook/**",
           "/jest.*",
+          "/scripts/**",
           "**/*.test.@(js|jsx|ts|tsx)",
           "**/*.stories.@(js|jsx|ts|tsx|mdx)",
         ],
