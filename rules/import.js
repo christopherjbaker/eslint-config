@@ -23,7 +23,7 @@ module.exports = {
       {
         commonjs: true,
         caseSensitive: true,
-        ignore: ["^~", "^@shared"],
+        ignore: ["^@shared", "^@scenes"],
       },
     ],
   },
