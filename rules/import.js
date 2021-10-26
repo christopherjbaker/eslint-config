@@ -18,13 +18,5 @@ module.exports = {
         ],
       },
     ],
-    "import/no-unresolved": [
-      "error",
-      {
-        commonjs: true,
-        caseSensitive: true,
-        ignore: ["^@shared", "^@scenes"],
-      },
-    ],
   },
 }

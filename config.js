@@ -6,11 +6,11 @@ module.exports = {
     './rules/react',
   ].map(require.resolve),
   settings: {
-    "react": {
-      "version": "detect"
+    react: {
+      version: "detect"
     },
     'import/resolver': {
-      'node': {
+      node: {
         extensions: [
           '.js',
           '.ts',

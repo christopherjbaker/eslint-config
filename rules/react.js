@@ -17,6 +17,8 @@ module.exports = {
     "react-hooks/exhaustive-deps": "error",
     "react-hooks/rules-of-hooks": "error",
 
+    "jsx-a11y/no-onchange": "off",
+
     "react/default-props-match-prop-types": [
       "error",
       {
