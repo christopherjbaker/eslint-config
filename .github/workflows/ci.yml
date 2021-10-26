@@ -1,6 +1,6 @@
 name: CI
 
-on: [release]
+on: [push]
 
 jobs:
   build:
@@ -21,22 +21,28 @@ jobs:
       - name: "Install"
         run: npm ci
 
-      - name: Use Node.js with Github Packages
+      - name: Use Node.js with Github Packages Registry
+        if: github.event.ref_type == 'tag'
         uses: actions/setup-node@v2
         with:
           node-version: "14"
           registry-url: "https://npm.pkg.github.com/"
           scope: "@hmudesign"
       - name: Publish
+        if: github.event.ref_type == 'tag'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Use Node.js with Github Packages
+      - name: Use Node.js with NPM Registry
+        if: github.event.ref_type == 'tag'
         uses: actions/setup-node@v2
         with:
           node-version: "14"
+          registry-url: "https://registry.npmjs.org/"
+          scope: "@hmudesign"
       - name: Publish
+        if: github.event.ref_type == 'tag'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_TOKEN_NPM }}
