@@ -21,35 +21,6 @@ jobs:
       - name: "Install"
         run: npm ci
 
-      - name: "Test"
-        run: echo ${{ env.GITHUB_REF }}
-
-      - name: Use Node.js with Github Packages
-        if: ${{ startsWith(env.GITHUB_REF, 'v') }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: "14"
-          registry-url: "https://npm.pkg.github.com/"
-          scope: "@hmudesign"
-      - name: Publish
-        if: ${{ startsWith(env.GITHUB_REF, 'v') }}
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Use Node.js with Github Packages
-        if: ${{ startsWith(env.GITHUB_REF, 'v') }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: "14"
-          registry-url: "https://registry.npmjs.org/"
-          scope: "@hmudesign"
-      - name: Publish
-        if: ${{ startsWith(env.GITHUB_REF, 'v') }}
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_TOKEN_NPM }}
-
       - name: Notify Slack for Failures
         if: failure()
         env:

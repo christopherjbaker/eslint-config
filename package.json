@@ -1,6 +1,6 @@
 {
   "name": "@hmudesign/eslint-config",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "",
   "author": "Christopher Baker <christopher@hmudesign.com>",
   "license": "MIT",
@@ -13,11 +13,6 @@
     "url": "https://github.com/HMUDesign/eslint-config/issues"
   },
   "main": "config.js",
-  "scripts": {
-    "release:major": "npm version major && git push && git push --tags",
-    "release:minor": "npm version minor && git push && git push --tags",
-    "release:patch": "npm version patch && git push && git push --tags"
-  },
   "prettier": {
     "semi": false,
     "trailingComma": "all"
