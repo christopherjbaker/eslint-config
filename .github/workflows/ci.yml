@@ -21,6 +21,9 @@ jobs:
       - name: "Install"
         run: npm ci
 
+      - name: "Test"
+        run: echo ${{ env.GITHUB_REF }}
+
       - name: Use Node.js with Github Packages
         if: ${{ startsWith(env.GITHUB_REF, 'v') }}
         uses: actions/setup-node@v2
