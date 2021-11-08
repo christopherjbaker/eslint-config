@@ -1,16 +1,29 @@
 module.exports = {
-  plugins: ["@typescript-eslint"],
-  extends: ["plugin:@typescript-eslint/recommended"],
+  plugins: [
+    "@typescript-eslint",
+  ],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+  ],
   rules: {
-    "@typescript-eslint/ban-ts-comment": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-inferrable-types": "off",
-    "import/no-unresolved": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
 
-    "no-console": ["warn", { allow: ["warn", "error"] }],
+    "no-console": [
+      "warn",
+      {
+        allow: ["warn", "error"],
+      },
+    ],
     "no-warning-comments": [
       "warn",
       {
-        terms: ["todo", "fixme", "xxx"],
+        terms: ["todo"],
         location: "start",
       },
     ],
@@ -24,4 +37,4 @@ module.exports = {
       },
     ],
   },
-}
+};
