@@ -14,6 +14,8 @@ module.exports = {
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/ban-ts-comment": "off",
 
+    "@typescript-eslint/explicit-module-boundary-types": "error",
+
     "no-console": [
       "warn",
       {
