@@ -1,4 +1,7 @@
-module.exports = {
+const tryRequire = require('../lib/try-require')
+const react = tryRequire('react')
+
+module.exports = !react ? {} : {
   plugins: [
     "react",
     "react-hooks",
