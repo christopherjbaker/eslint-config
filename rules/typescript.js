@@ -1,8 +1,6 @@
 import tseslint from "typescript-eslint"
 
-import ifRequire from "../lib/if-require.cjs"
-
-export default ifRequire("typescript", [
+export default [
   {
     settings: {
       "import/resolver": {
@@ -30,4 +28,4 @@ export default ifRequire("typescript", [
       "@typescript-eslint/restrict-template-expressions": "off",
     },
   },
-]) ?? []
+]

@@ -1,8 +1,6 @@
-import ifRequire from "../lib/if-require.cjs"
-
 import typescriptBase from "./typescript.js"
 
-export default ifRequire("typescript", [
+export default [
   ...typescriptBase,
   {
     rules: {
@@ -11,4 +9,4 @@ export default ifRequire("typescript", [
       "@typescript-eslint/explicit-module-boundary-types": "error",
     },
   },
-]) ?? []
+]

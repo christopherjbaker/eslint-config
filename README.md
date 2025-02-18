@@ -10,10 +10,10 @@ Run `npm install --save-dev @christopherjbaker/eslint-config`
 
 This package ships with several primary configs.
 
-* base
-* base-strict
-* react
-* react-strict
+- base
+- base-strict
+- react
+- react-strict
 
 In your Project's ESLint config file, extend your desired config.
 
@@ -23,5 +23,6 @@ import cjbConfig from "@christopherjbaker/eslint-config/react-strict"
 export default [
   { ignores: ["dist"] },
   ...cjbConfig,
+  // your configs here
 ]
 ```

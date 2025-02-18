@@ -1,5 +1,6 @@
-import baseConfig from "./base.js"
 import reactRules from "../rules/react.js"
+
+import baseConfig from "./base.js"
 
 export default [
   //

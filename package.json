@@ -22,7 +22,7 @@
   },
   "scripts": {
     "lint": "npm run lint-eslint && npm run lint-prettier && npm run lint-depcheck",
-    "lint-eslint": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx .",
+    "lint-eslint": "eslint .",
     "lint-prettier": "prettier --check .",
     "lint-depcheck": "depcheck .",
     "test:base": "node configs/base.test.js",
@@ -40,9 +40,11 @@
     "eslint-plugin-jest": "^28.11.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "5.2.0-canary-0a82580b-20250203",
+    "globals": "^14.0.0",
     "typescript-eslint": "^8.23.0"
   },
   "devDependencies": {
+    "@types/node": "^22.13.4",
     "depcheck": "^1.4.7",
     "eslint": "^9.19.0",
     "prettier": "^3.4.2",

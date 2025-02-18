@@ -5,8 +5,10 @@ on:
   workflow_dispatch:
     inputs:
       segment:
-        description: "The version segment to increment. (major, minor, or patch)"
+        description: "The version segment to increment: major, minor, patch, or prerelease."
         required: true
+      preId:
+        description: 'Appended to the prerelease segment. (default: "")'
 
 jobs:
   verify:
@@ -42,7 +44,10 @@ jobs:
         run: npm run test:react-strict
 
   build:
+    name: Build
     runs-on: ubuntu-latest
+    needs: verify
+
     if: github.event_name == 'workflow_dispatch'
     permissions:
       contents: write
@@ -60,23 +65,45 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Increment Version
+      - name: Determine Tag
+        id: publish-tag
+        shell: bash
         run: |
-          git config --local user.email "Workflow: ${{ github.workflow }}"
-          git config --local user.name "${{ github.workflow }}@workflow"
-          npm version ${{ github.event.inputs.segment }} -m "Publish v%s"
+          if [[ ${{ inputs.segment }} == pre* ]]; then
+            echo "tag=next" >> $GITHUB_OUTPUT
+          else
+            echo "tag=latest" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Increment Version
+        shell: bash
+        run: |
+          git config --local user.name "Workflow: ${{ github.workflow }}"
+          git config --local user.email "${{ github.workflow }}@workflow"
+
+          if [[ ${{ inputs.segment }} == pre* ]]; then
+            if [[ -n "${{ inputs.preId }}" ]]; then
+              PREID_CMD="--preid ${{ inputs.preId }}"
+            fi
+          fi
+
+          npm version ${{ inputs.segment }} -m "Publish v%s" $PREID_CMD
 
       - name: Publish to GitHub Packages Registry
         uses: JS-DevTools/npm-publish@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           registry: "https://npm.pkg.github.com/"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.publish-tag.outputs.tag }}
+          access: public
 
       - name: Publish to NPM Registry
         uses: JS-DevTools/npm-publish@v3
         with:
-          token: ${{ secrets.REGISTRY_TOKEN_NPM }}
           registry: "https://registry.npmjs.org/"
+          token: ${{ secrets.REGISTRY_TOKEN_NPM }}
+          tag: ${{ steps.publish-tag.outputs.tag }}
+          access: public
 
       - name: Push Tag
         uses: ad-m/github-push-action@master
@@ -84,13 +111,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
           tags: true
-
-      - name: Notify Slack for Failures
-        if: failure()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: ci
-          status: FAILED
-          color: danger

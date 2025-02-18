@@ -1,15 +1,11 @@
 import importPlugin from "eslint-plugin-import"
 
-import tryRequire from "../lib/try-require.cjs"
-
-const noTypeScript = !tryRequire("typescript")
-
 export default [
   {
     settings: {
       "import/internal-regex": "^#",
       "import/resolver": {
-        typescript: !noTypeScript,
+        typescript: true,
         node: true,
       },
     },
