@@ -16,7 +16,11 @@ export default [
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
-        { ignoreRestSiblings: true, args: "none" },
+        {
+          args: "none",
+          caughtErrors: "none",
+          ignoreRestSiblings: true,
+        },
       ],
 
       "@typescript-eslint/no-confusing-void-expression": "off",
