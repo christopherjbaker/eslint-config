@@ -1,0 +1,96 @@
+name: Verify and Publish
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      segment:
+        description: "The version segment to increment. (major, minor, or patch)"
+        required: true
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: ESLint
+        run: npm run lint-eslint
+      - name: Prettier
+        run: npm run lint-prettier
+      - name: depcheck
+        run: npm run lint-depcheck
+
+      - name: Test Base
+        run: npm run test:base
+      - name: Test Base Strict
+        run: npm run test:base-strict
+      - name: Test React
+        run: npm run test:react
+      - name: Test React Strict
+        run: npm run test:react-strict
+
+  build:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Increment Version
+        run: |
+          git config --local user.email "Workflow: ${{ github.workflow }}"
+          git config --local user.name "${{ github.workflow }}@workflow"
+          npm version ${{ github.event.inputs.segment }} -m "Publish v%s"
+
+      - name: Publish to GitHub Packages Registry
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: "https://npm.pkg.github.com/"
+
+      - name: Publish to NPM Registry
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.REGISTRY_TOKEN_NPM }}
+          registry: "https://registry.npmjs.org/"
+
+      - name: Push Tag
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          tags: true
+
+      - name: Notify Slack for Failures
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: ci
+          status: FAILED
+          color: danger
