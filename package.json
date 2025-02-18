@@ -1,42 +1,54 @@
 {
-  "name": "@hmudesign/eslint-config",
-  "version": "2.4.0",
+  "name": "@christopherjbaker/eslint-config",
+  "version": "2.4.1-0",
+  "type": "module",
   "description": "",
-  "author": "Christopher Baker <christopher@hmudesign.com>",
+  "author": "Christopher Baker <christopher@christopherjbaker.dev>",
   "license": "MIT",
-  "homepage": "https://github.com/HMUDesign/eslint-config#readme",
+  "homepage": "https://github.com/christopherjbaker/eslint-config#readme",
+  "keywords": [
+    "eslint",
+    "eslintconfig"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HMUDesign/eslint-config.git"
+    "url": "git+https://github.com/christopherjbaker/eslint-config.git"
   },
-  "bugs": {
-    "url": "https://github.com/HMUDesign/eslint-config/issues"
+  "exports": {
+    "./base": "./configs/base.js",
+    "./base-strict": "./configs/base-strict.js",
+    "./react": "./configs/react.js",
+    "./react-strict": "./configs/react-strict.js"
   },
-  "main": "config.js",
   "scripts": {
-    "test": "node config.test.js"
-  },
-  "prettier": {
-    "semi": false,
-    "trailingComma": "all"
+    "lint": "npm run lint-eslint && npm run lint-prettier && npm run lint-depcheck",
+    "lint-eslint": "eslint .",
+    "lint-prettier": "prettier --check .",
+    "lint-depcheck": "depcheck .",
+    "test:base": "node configs/base.test.js",
+    "test:base-strict": "node configs/base-strict.test.js",
+    "test:react": "node configs/react.test.js",
+    "test:react-strict": "node configs/react-strict.test.js"
   },
   "peerDependencies": {
-    "eslint": "^8.2.0"
+    "eslint": ">= 9"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
-    "eslint-plugin-jest": "^26.1.5",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "eslint-plugin-testing-library": "^5.3.1"
+    "@eslint/js": "^9.19.0",
+    "eslint-import-resolver-typescript": "^3.7.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jest": "^28.11.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "5.2.0-canary-0a82580b-20250203",
+    "globals": "^14.0.0",
+    "typescript-eslint": "^8.23.0"
   },
   "devDependencies": {
-    "eslint": "^8.14.0",
-    "expect": "^28.0.2",
-    "jest": "^28.0.3",
-    "react": "^18.1.0",
-    "typescript": "^4.6.4"
+    "@types/node": "^22.13.4",
+    "depcheck": "^1.4.7",
+    "eslint": "^9.19.0",
+    "prettier": "^3.4.2",
+    "react": "^19.0.0",
+    "typescript": "^5.7.2"
   }
 }

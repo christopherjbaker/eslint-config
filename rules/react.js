@@ -1,30 +1,23 @@
-const tryRequire = require('../lib/try-require')
-const react = tryRequire('react')
+import reactPlugin from "eslint-plugin-react"
+import reactHooksPlugin from "eslint-plugin-react-hooks"
 
-module.exports = !react ? {} : {
-  plugins: [
-    "react",
-    "react-hooks",
-    "jsx-a11y",
-  ],
-  extends: [
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react/jsx-runtime",
-  ],
-  rules: {
-    "react/prop-types": "off",
+import ifRequire from "../lib/if-require.cjs"
 
-    "react-hooks/exhaustive-deps": "error",
-    "react-hooks/rules-of-hooks": "error",
-  },
-  overrides: [
-    {
-      files: "**/*.+(ts|tsx)",
-      rules: {
-        "react/display-name": "off",
+export default ifRequire("react", [
+  {
+    settings: {
+      react: {
+        version: "detect",
       },
-    }
-  ]
-};
+    },
+  },
+  reactHooksPlugin.configs["recommended-latest"],
+  reactPlugin.configs.flat.recommended,
+  reactPlugin.configs.flat["jsx-runtime"],
+  {
+    rules: {
+      "react/no-unknown-property": "off",
+      "react/prop-types": "off",
+    },
+  },
+]) ?? []
