@@ -14,12 +14,10 @@ export default [
   importPlugin.flatConfigs.typescript,
   {
     rules: {
-      "import/no-named-as-default-member": "off",
-
-      "import/consistent-type-specifier-style": "error",
       "import/first": "error",
       "import/newline-after-import": "error",
       "import/no-absolute-path": "error",
+      "import/no-named-as-default-member": "off",
       "import/no-useless-path-segments": "error",
     },
   },

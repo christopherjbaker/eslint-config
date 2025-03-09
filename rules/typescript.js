@@ -28,8 +28,18 @@ export default [
       "@typescript-eslint/no-unnecessary-type-parameters": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-use-before-define": "off",
+      "@typescript-eslint/non-nullable-type-assertion-style": "off",
       "@typescript-eslint/prefer-regexp-exec": "off",
       "@typescript-eslint/restrict-template-expressions": "off",
+
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          checksConditionals: true,
+          checksSpreads: true,
+          checksVoidReturn: false,
+        },
+      ],
     },
   },
 ]

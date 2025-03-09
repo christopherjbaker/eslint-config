@@ -7,10 +7,11 @@ export default [
       "@typescript-eslint/consistent-type-imports": [
         "error",
         {
-          prefer: "no-type-imports",
+          prefer: "type-imports",
           fixStyle: "inline-type-imports",
         },
       ],
+      "import/consistent-type-specifier-style": ["error", "prefer-inline"],
       "import/order": [
         "error",
         {
