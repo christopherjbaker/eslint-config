@@ -1,4 +1,4 @@
-import reactRules from "../rules/react.js"
+import reactRules from "../rules/react-strict.js"
 
 import baseConfig from "./base-strict.js"
 
