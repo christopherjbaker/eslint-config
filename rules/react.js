@@ -16,6 +16,7 @@ export default ifRequire("react", [
   reactPlugin.configs.flat["jsx-runtime"],
   {
     rules: {
+      "react/display-name": "off",
       "react/no-unknown-property": "off",
       "react/prop-types": "off",
     },

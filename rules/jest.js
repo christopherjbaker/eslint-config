@@ -7,7 +7,7 @@ import ifRequire from "../lib/if-require.cjs"
 
 export default ifRequire("jest", [
   {
-    files: ["**/*.test.js", "**/*.test.jsx", "**/*.test.ts", "**/*.test.tsx"],
+    files: ["**/*.test.*"],
     plugins: { jest: jestPlugin },
     languageOptions: {
       globals: jestPlugin.environments.globals.globals,

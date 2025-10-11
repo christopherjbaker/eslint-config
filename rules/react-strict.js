@@ -7,7 +7,7 @@ export default ifRequire("react", [
   {
     files: ["**/*.jsx", "**/*.tsx"],
     rules: {
-      "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+      //
     },
   },
 ]) ?? []
